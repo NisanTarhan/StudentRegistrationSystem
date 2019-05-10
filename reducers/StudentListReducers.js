@@ -20,6 +20,6 @@ export default (state = INITIAL_STATE, action) => {
         case ADD_STUDENT_LIST:
             return {...state, items: [...state.items, action.payload], isCreated: true};
         default:
-            return false;
+            return state;
     }
 };

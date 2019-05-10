@@ -4,7 +4,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import { Item } from './index';
 import LinearGradient from 'react-native-linear-gradient';
 import { connect } from 'react-redux';
-import {getStudentList} from '../../actions'
+import {getStudentList, getGradeList} from '../../actions'
 
 class StudentList extends Component {
 
@@ -18,11 +18,13 @@ class StudentList extends Component {
     department: '',
     parentName: '',
     parentTel: '',
+    grades: [],
     items: []
   }
 
   componentDidMount = () => {
     this.props.getStudentList();
+    this.props.getGradeList();
   };
 
   // async componentWillReceiveProps(props) {
@@ -59,6 +61,7 @@ class StudentList extends Component {
   // }
 
   renderItem = ({ item, index }) => {
+    console.log(this.props.grades[0]);
     return (
       <Item data={item} indexOfItem={index} />);
     // <Item data={item} indexOfItem={index} delete={this.deleteItem} />);
@@ -88,13 +91,13 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: 'blue',
     justifyContent: 'center',
   }
 });
 
-const mapStateToProps = ({studenListResponse}) => {
-  return { items: studenListResponse.items, isCreated: studenListResponse.isCreated}
+const mapStateToProps = ({studentListResponse, gradeListResponse}) => {
+  console.log("GELEN DATA:" + studentListResponse.items, gradeListResponse)
+  return { items: studentListResponse.items, grades: gradeListResponse.grades, isCreated: studentListResponse.isCreated}
 };
 
-export default connect(mapStateToProps,{getStudentList})(StudentList);
+export default connect(mapStateToProps,{getStudentList, getGradeList})(StudentList);

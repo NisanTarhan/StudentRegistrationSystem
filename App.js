@@ -47,7 +47,7 @@ export default class App extends Component{
               >
             </Scene>
 
-            {/* <Scene 
+            <Scene 
               key='detail'
               component={Detail}
               title="Detail">
@@ -57,7 +57,7 @@ export default class App extends Component{
               key='grade'
               component={Grade}
               title="Grade">
-            </Scene> */}
+            </Scene>
           </Stack>
         </Router>
       </Provider>    

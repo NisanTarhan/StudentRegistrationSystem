@@ -87,9 +87,9 @@ class AddStudent extends Component {
 }
 
 const styles = StyleSheet.create({
-  linearGradient: {
-    flex: 1,
-  },
+  // linearGradient: {
+  //   flex: 1,
+  // },
   container: {
     height: height,
     width: width,
